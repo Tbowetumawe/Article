@@ -1,0 +1,12 @@
+{# empty Twig template #}
+
+{% include "navbar.html.twig" %}
+
+{% block body %}
+    <center>
+         <h3>Suppression d'un article</h3><br/>
+         <p>Êtes-vous sûre de vouloir supprimer la ligne numéro {{ article.id }} et de désignation {{ article.designation }} ?</p><br/>
+         <a href="/article/afficher" class="btn btn-outline-success">NON</a>
+         <a href="/article/supprimer/{{ article.id }}" class="btn btn-outline-danger">OUI</a>
+    </center>
+{% endblock %}

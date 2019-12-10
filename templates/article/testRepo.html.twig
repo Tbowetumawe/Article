@@ -1,0 +1,29 @@
+{%  include 'navbar.html.twig'%}
+
+{% block title %}Index{% endblock %}
+
+{% block head %}
+  
+{% endblock %}
+
+{% block body %}
+
+<table class="table"> 
+    <thead>
+        <tr>
+            <th>Désignation</th>
+            <th> Quantite </th>
+            <th> Prix </th>
+
+        </tr>       
+    </thead>
+{% for val in result %} 
+    <tr>
+        <td>{{ val.designation }}</td>
+        <td>{{ val.qte }}</td>
+        <td>{{ val.getPrixUnit }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}

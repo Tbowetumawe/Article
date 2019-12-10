@@ -1,0 +1,41 @@
+{%  extends "base.html.twig" %}
+
+{% block title %}Index{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+{{ val1|upper }}
+
+{% for val in val2 %} 
+    <br />{{ val }}
+{% endfor %}
+
+Date d'aujourd'hui : {{ "now"|date('d/m/Y') }}
+<br />
+
+{{ "Il y a %s pommes et %s poires"|format(153, val1) }}
+<br />
+
+Nombre d'éléments du tableau : {{ val2|length }}
+
+<br /><br />
+{{ app.session.get('couleur') }}
+
+<br /><br />
+{{ app.session.get('modele') }}
+<br /><br />
+<h3>{{ app.environment }}</h3>
+
+<br />
+<h3>{{ app.user }}</h3>
+
+<br />
+<h3>{{ app.request }}</h3>
+
+{% set data = '<h1>coucou</h1>' %}                        
+    {{ data|raw }}
+
+{% endblock %}

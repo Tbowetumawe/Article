@@ -1,0 +1,57 @@
+{%  include "navbar.html.twig" %}
+
+{% block title %}
+    Formulaire Ajout Catégorie
+{% endblock %}
+
+{% block body %}
+<center>
+    <h3><center>Formulaire Catégorie</center></h3>
+<br>
+
+<div class="well">
+
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    
+<div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.libelle, "Nom Catégorie", {'label_attr': {'class': 'col-sm-3 control-label'}}) }} 
+            
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.libelle) }}
+      <div class="col-sm-4">
+      {# Génération de l'input. #}
+      {{ form_widget(form.libelle, {'attr': {'class': 'form-control'}}) }}
+   </div>
+</div>
+      
+
+    
+{# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+        <div class="row">
+        <label class="col-md-4 control-label"></label>
+             <div class="col-sm-4 col-md-offset-2">
+                {{ form_widget(form.valider, {'attr': {'class': 'col-md-4 btn btn-primary'}}) }}
+                {{ form_widget(form.annuler, {'attr': {'class': 'col-md-4 btn btn-primary'}}) }}
+            </div>
+    </div>
+</div>
+{% if app.session.flashBag.has('success') %}
+  <div class="alert alert-success">
+       {% for msg in app.session.flashBag.get('success') %}
+              {{ msg }}
+       {% endfor %}
+   </div>
+{% endif %}
+
+{{ form_rest(form) }}
+
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(form) }}
+
+</center>
+{% endblock %}

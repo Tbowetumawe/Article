@@ -1,0 +1,115 @@
+{% include "navbar.html.twig" %}
+{% block title %}
+    Formulaire de connexion
+{% endblock %}
+
+{% block body %}
+<center>
+<div class="container">
+
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    <h3><center>Formulaire ajout de mission</center></h3>
+
+<div class="well">
+
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
+
+    <div class="form-group">
+      {# Génération du label. #}
+      {{ form_label(form.code, "Code article", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      
+      {# Affichage des erreurs pour ce champ précis. #}
+      {{ form_errors(form.code) }}
+
+      <div class="col-sm-4">
+        {# Génération de l'input. #}
+        {{ form_widget(form.code, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    {# Idem pour un autre champ. #}
+
+    <div class="form-group">
+      {{ form_label(form.designation, "Désignation", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.designation) }}
+       <div class="col-sm-4">
+        {{ form_widget(form.designation) }}
+      </div> 
+    </div>
+
+    <div class="form-group">
+      {{ form_label(form.qte, "Quantité", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.qte) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.qte, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+    <div class="form-group">
+      {{ form_label(form.prix_unit, "Prix unitaire", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.prix_unit) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.prix_unit, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+   
+    <div class="form-group">
+
+      {{ form_label(form.categorie, "Catégorie", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+      {{ form_errors(form.categorie) }}
+      <div class="col-sm-4">
+        {{ form_widget(form.categorie, {'attr': {'class': 'form-control'}}) }}
+      </div>
+    </div>
+
+  {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+<div class="row">
+  
+    <div class="container">
+        <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                {{ form_widget(form.valider, {'attr': {'class': 'btn btn-success'}}) }}
+                 {{ form_widget(form.annuler, {'attr': {'class': 'btn btn-success'}}) }}
+            </div>
+    </div>
+
+</div>
+    
+
+ </div>
+            
+  {# Affichage des messages de sessions #}
+   
+  {% if app.session.flashBag.has('success') %}
+  <div class="alert alert-success">
+       {% for msg in app.session.flashBag.get('success') %}
+              {{ msg }}
+       {% endfor %}
+   </div>
+  {% endif %}
+
+
+            
+  {{ form_rest(form) }}
+
+  
+
+  {# Fermeture de la balise <form> du formulaire HTML #}
+
+  {{ form_end(form) }}
+  
+ {# <a href="/add_article" class="btn btn-outline-light">AJOUTER NOUVEL<br/>ARTICLE</a><br/> #}
+
+</center>
+
+</div>{# empty Twig template #}
+
+
+{% endblock %}
